@@ -18,6 +18,9 @@ class Translator:
         :return: 返回url编码过的数据
         '''
         salt = str(int(round(time.time() * 1000))) #产生产生随机数 ,其实固定值也可以,比如"2"
+        
+        #http://ai.youdao.com/docs/doc-trans-api.s#p02
+        #签名生成方法：将sign_text进行md5
         sign_text = self.appKey + queryText + salt +self.appSercret
         sign = hashlib.md5(sign_text.encode('utf-8')).hexdigest()
 
